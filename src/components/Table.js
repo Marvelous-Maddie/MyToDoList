@@ -12,7 +12,14 @@ const Table = ({ todo, index, completeTodo, removeTodo }) => {
       <tbody>
         <tr>
           <td>{todo.text}</td>
-          <td><i className="bi bi-check-square" onClick={() => completeTodo(index)}></i><i className="bi bi-trash" onClick={() => removeTodo(index)}></i></td>
+          <td>
+            <button>
+              <i className="bi bi-check-square" onClick={() => completeTodo(index)}></i>
+            </button>
+            <button>
+              <i className="bi bi-trash" onClick={() => removeTodo(index)}></i>
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
