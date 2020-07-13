@@ -4,19 +4,19 @@ const Table = ({ todo, index, completeTodo, removeTodo }) => {
   return(
     <table className="table table-striped mt-5">
       <thead>
-        <tr>
-          <th>Task</th>
-          <th></th>
+        <tr className="d-flex">
+          <th className="col-9">Task</th>
+          <th className="col-3"></th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>{todo.text}</td>
-          <td>
-            <button>
+        <tr className="d-flex">
+          <td className="col-9">{todo.text}</td>
+          <td className="col-3">
+            <button className="btn btn-success">
               <i className="bi bi-check-square" onClick={() => completeTodo(index)}></i>
             </button>
-            <button>
+            <button className="btn btn-danger">
               <i className="bi bi-trash" onClick={() => removeTodo(index)}></i>
             </button>
           </td>
