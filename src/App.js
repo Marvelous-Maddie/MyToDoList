@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import Form from "./components/Form";
 import Table from "./components/Table";
+
 import "./styles.css";
 
 export default function App() {
@@ -27,17 +28,15 @@ export default function App() {
     <div className="App">
       <div className="container mt-4">
         <h1 className="display-4 text-center">
-          <i className="bi bi-list-check"></i>
           My<span className="text-success">ToDo</span>List
         </h1>
         <Form addTodo={addTodo} />
-        {todos.map((todo, index) => (
-          <Table key={index}
-            index={index}
-            todo={todo}
-            completeTodo={completeTodo}
-            removeTodo={removeTodo}/>
-          ))}
+        <Table key={index}
+          index={index}
+          todos={todos}
+          todo={todo}
+          completeTodo={completeTodo}
+          removeTodo={removeTodo} />
       </div>
     </div>
   );
