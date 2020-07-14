@@ -1,5 +1,5 @@
 import React from "react";
-import TableBody from "./components/TableBody";
+import TableBody from "./TableBody";
 
 const Table = ({ todos, todo, index, completeTodo, removeTodo }) => {
   return(

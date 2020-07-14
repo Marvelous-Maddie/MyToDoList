@@ -31,10 +31,8 @@ export default function App() {
           My<span className="text-success">ToDo</span>List
         </h1>
         <Form addTodo={addTodo} />
-        <Table key={index}
-          index={index}
+        <Table
           todos={todos}
-          todo={todo}
           completeTodo={completeTodo}
           removeTodo={removeTodo} />
       </div>
