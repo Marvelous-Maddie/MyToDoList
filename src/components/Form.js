@@ -1,13 +1,21 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
-const Form = ({ addTodo }) => {
+const Form = ({ todos, setTodos }) => {
   const [value, setValue] = useState("");
+
+  useEffect(() => localStorage.setItem('todos', JSON.stringify(todos)), [todos]);
 
   const handleSubmit = e => {
     e.preventDefault();
     if (!value) return;
     addTodo(value);
     setValue("");
+  };
+
+  const addTodo = text => {
+    const newTodos = [...todos, { text }];
+    setTodos(newTodos);
+    console.log(newTodos)
   };
 
   return(

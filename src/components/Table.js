@@ -1,8 +1,31 @@
-import React from "react";
+import React, {useEffect} from "react";
 import TableBody from "./TableBody";
 
-const Table = ({ todos, todo, index, completeTodo, removeTodo }) => {
-  return(
+const Table = ({ todos, setTodos }) => {
+  useEffect(() => {
+    if (localStorage.getItem('todos') === null) {
+      setTodos([]);
+    } else {
+      setTodos(JSON.parse(localStorage.getItem('todos')));
+    }
+    console.log({todos});
+  }, []);
+
+  const completeTodo = index => {
+    const newTodos = [...todos];
+    newTodos[index].isCompleted = !newTodos[index].isCompleted;
+    setTodos(newTodos);
+    localStorage.setItem('todos', JSON.stringify(todos))
+  };
+
+  const removeTodo = index => {
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
+    localStorage.setItem('todos', JSON.stringify(todos))
+  };
+
+return(
     <table className="table table-striped mt-5">
       <thead>
         <tr className="d-flex">
