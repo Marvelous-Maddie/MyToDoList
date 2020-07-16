@@ -10,6 +10,7 @@ A simple todo list to exercise DOM manipulation with ReactJS.
 
 * HTML5
 * JavaScript (ES6)
+* ReactJS
 * Bootstrap 4.5
 * Bootswatch
 
