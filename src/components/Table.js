@@ -15,14 +15,12 @@ const Table = ({ todos, setTodos }) => {
     const newTodos = [...todos];
     newTodos[index].isCompleted = !newTodos[index].isCompleted;
     setTodos(newTodos);
-    localStorage.setItem('todos', JSON.stringify(todos))
   };
 
   const removeTodo = index => {
     const newTodos = [...todos];
     newTodos.splice(index, 1);
     setTodos(newTodos);
-    localStorage.setItem('todos', JSON.stringify(todos))
   };
 
 return(

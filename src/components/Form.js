@@ -1,15 +1,28 @@
 import React, {useState, useEffect} from "react";
 
 const Form = ({ todos, setTodos }) => {
-  const [value, setValue] = useState("");
+  const [todoInputValue, setTodoInputValue] = useState("");
+  const [pageLoaded, setPageLoaded] = useState(false);
 
-  useEffect(() => localStorage.setItem('todos', JSON.stringify(todos)), [todos]);
+  useEffect(() => {
+    if (pageLoaded) {
+     localStorage.setItem('todos', JSON.stringify(todos));
+   } else {
+     setPageLoaded(true);
+   }},
+  [todos,pageLoaded]
+)
+
+  const handleChange = e => {
+    const newTodo = e.target.value;
+    setTodoInputValue(newTodo);
+  }
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (!value) return;
-    addTodo(value);
-    setValue("");
+    if (!todoInputValue) return;
+    addTodo(todoInputValue);
+    setTodoInputValue("");
   };
 
   const addTodo = text => {
@@ -21,7 +34,7 @@ const Form = ({ todos, setTodos }) => {
   return(
     <form onSubmit={handleSubmit}>
       <div className="form-group">
-        <input type="text" className="form-control" placeholder="My next task" onChange={e => setValue(e.target.value)}></input>
+        <input value={todoInputValue} type="text" className="form-control" placeholder="My next task" onChange={handleChange}></input>
       </div>
       <input type="submit" value="Add Task" className="btn btn-success btn-block"></input>
     </form>
